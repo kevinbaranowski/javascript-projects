@@ -14,11 +14,3 @@ if (engineIndicatorLight === "green") {
 } else {
    console.log("engines are off");
 }
-
-
-
-
-
-
-
-
