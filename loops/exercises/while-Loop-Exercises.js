@@ -9,12 +9,14 @@ let shuttleAltitudeKm = 0;
 
 /*Exercise #4: Construct while loops to do the following:
   a. Query the user for the starting fuel level. Validate that the user enters a positive, integer value greater than 5000 but less than 30000. */
-  while (fuelLevel <= 5000 || fuelLevel >= 30000) {
+  while (fuelLevel <= 5000 || fuelLevel >= 30000 || isNaN(fuelLevel)) {
     let response = input.question("Please enter the starting fuel level. The value must be between 5000 and 30000. ");
     fuelLevel = Number(response);
     if (fuelLevel > 5000 && fuelLevel < 30000) {
       console.log('Validation successful. Valid starting fuel level was entered.');
       break;
+    } else if (isNaN(fuelLevel)) {
+      console.log('Validation unsuccessful. Fuel level must be a number.')
     } else {
       console.log('Validation unsuccessful. Please try again.')
     }
@@ -24,12 +26,14 @@ let shuttleAltitudeKm = 0;
 
 
 //b. Use a second loop to query the user for the number of astronauts (up to a maximum of 7). Validate the entry.
-  while (astronautsOnBoard > 7 || astronautsOnBoard < 1) {
+  while (astronautsOnBoard > 7 || astronautsOnBoard < 1 || isNaN(astronautsOnBoard)) {
     let response = input.question('Please enter the number of astronauts on board. The ship can accomodate no more than 7 astronauts. ');
     astronautsOnBoard = Number(response);
     if (astronautsOnBoard > 0 && astronautsOnBoard <= 7) {
       console.log('Validation successful. Valid number of astronauts entered.');
       break;
+    } else if (isNaN(astronautsOnBoard)) {
+      console.log('Validation unsuccessful. Number of astronauts must be a number.')
     } else {
       console.log('Validation unsuccessful. Please try again.')
     }
