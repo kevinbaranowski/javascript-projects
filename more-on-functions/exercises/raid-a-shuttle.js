@@ -24,8 +24,55 @@ let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold
 console.log("Fuel level: " + checkFuel(fuelLevel));
 console.log("Hold status: " + holdStatus(cargoHold));
 
+const unsuspiciousFunction = function (fuelLevel) {
+  let stolenFuel = 0;
+  if (checkFuel(fuelLevel) === 'green') {
+    while (fuelLevel > 100000) {
+      fuelLevel -= 1;
+      stolenFuel += 1;
+    }
+  } else if (checkFuel(fuelLevel) === 'yellow') {
+    while (fuelLevel > 50000) {
+      fuelLevel -= 1;
+      stolenFuel += 1;
+    }
+  } else {
+    stolenFuel = fuelLevel;
+  }
+  return stolenFuel;
+}
+//console.log(unsuspiciousFunction(fuelLevel))
+
+const anotherInnocentFunction = function (array) {
+  let swipedItems = [];
+  for (i = 0; i < 2; i++) {
+    if (array.includes('gold')) {
+      let item = array.splice(array.indexOf('gold'), 1);
+      swipedItems.push(item);
+      array.push('pennies');
+    } else if (array.includes('space suits')) {
+      let item = array.splice(array.indexOf('space suits'), 1);
+      swipedItems.push(item);
+      array.push('chicken suits');
+    } else {
+      console.log('there is nothing else worth taking');
+    }
+  }
+  console.log('items stolen, they never suspected a thing...')
+  return swipedItems;
+}
+//console.log(anotherInnocentFunction(cargoHold))
+//console.log(cargoHold)
+
+function irs (fuelLevel, cargoHold) {
+  let arr = anotherInnocentFunction(cargoHold);
+  return `Raided ${unsuspiciousFunction(fuelLevel)} kg of fuel from the tanks, and stole ${arr[0]} and ${arr[1]} from the cargo hold.`
+}
+console.log(irs(fuelLevel, cargoHold));
 /* Steal some fuel from the shuttle:
+
  * /
+
  
 //a). Define an anonymous function and set it equal to a variable with a normal, non-suspicious name. The function takes one parameter. This will be the fuel level on the shuttle.
 
@@ -54,4 +101,4 @@ console.log("Hold status: " + holdStatus(cargoHold));
 //b). Call your anonymous fuel and cargo functions from within irs.
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
-
+*/

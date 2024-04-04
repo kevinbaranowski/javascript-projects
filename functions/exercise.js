@@ -8,12 +8,17 @@ function makeLine(size) {
 
 console.log(makeLine(8));
 
+// function makeSquare(size) {
+//     let square = '';
+//     for (i = 0; i < size; i++) {
+//         let row = makeLine(size);
+//         square += row + '\n'
+//     }
+//     return square
+// }
+
 function makeSquare(size) {
-    let square = '';
-    for (i = 0; i < size; i++) {
-        let row = makeLine(size);
-        square += row + '\n'
-    }
+    let square = makeRectangle(size, size);
     return square
 }
 
