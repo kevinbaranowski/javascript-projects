@@ -1,6 +1,6 @@
 function findMinValue(arr){
   let min = arr[0];
-  for (i = 0; i < arr.length; i++){
+  for (let i = 0; i < arr.length; i++){
     if (arr[i] < min){
       min = arr[i];
     }
@@ -19,6 +19,21 @@ function findMinValue(arr){
 6) Be sure to print the results in order to verify your code.*/
 
 //Your function here...
+function newSortedArray(numsArr) {
+  let newArr = [];
+  // while (numsArr.length > 0) {
+  //   let min = findMinValue(numsArr);
+  //   numsArr.splice(numsArr.indexOf(min), 1)
+  //   newArr.push(min)
+  // }
+  let length = numsArr.length
+  for (let i = 0; i < length; i++) {
+    let min = findMinValue(numsArr);
+    numsArr.splice(numsArr.indexOf(min), 1)
+    newArr.push(min);
+  }
+  return newArr;  
+}
 
 /* BONUS MISSION: Refactor your sorting function to use recursion below:
  */
@@ -27,3 +42,8 @@ function findMinValue(arr){
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
 let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
+
+console.log(newSortedArray(nums1))
+console.log(newSortedArray(nums2))
+console.log(newSortedArray(nums3))
+
